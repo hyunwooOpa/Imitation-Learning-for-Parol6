@@ -3,7 +3,12 @@
 Leader-arm teleoperation for the PAROL6 6-DOF arm, built for
 imitation learning data collection.
 
+> [!CAUTION]
+> The arm is still under improvement, and the code will be uploaded soon!
+> If you want to test the implementation or collaborate, please DM me.
+
 # System overview
+
 
 ## Diagram
 
