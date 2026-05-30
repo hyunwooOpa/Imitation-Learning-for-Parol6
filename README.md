@@ -38,16 +38,35 @@ imitation learning data collection.
 
 ## Running
 
+### 1. Building pipeline - Named pipe
+
 ```bash
-# Terminal 1
-cd PAROL-commander-software && python headless_commander.py
+# Terminal 1 - laying a pipe
+mkfifo /tmp/leader_pipe
+cat /tmp/leader_pipe
 
-# Terminal 2
-python openrb_reader.py
+# Terminal 2 - making a serial port
+ python teleopration-dynamixel.py
 
-# Terminal 3
-python teleop_bridge.py
+# Terminal 3 - bridging between leader and follwer
+python bridge-leader2follwer-dynamixel.py
+
 ```
+
+### 2. Starting up Parol6 (client)
+```bash
+# Terminal 4
+python API/headless_commander.py
+```
+
+### 3. Starting up leader arm (server)
+```bash
+# Terminal 5
+python /leader-dynamixel/test-leader-follwer.py
+```
+
+> [!CAUTION]
+> If you mix around the activation order, that might cause unwanted rapid moves of the follwer arm, resulting damage on some mechanical components on each joint.
 
 ## Safety
 - NC limit switches (hardware E-stop)
